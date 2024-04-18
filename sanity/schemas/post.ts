@@ -1,6 +1,6 @@
-import { Rule } from "sanity";
+import { defineType } from "sanity";
 
-export const post = {
+export const post = defineType({
   name: "post",
   title: "Post",
   type: "document",
@@ -10,7 +10,7 @@ export const post = {
       name: "title",
       title: "Title",
       type: "string",
-      validation: (Rule: Rule) => Rule.required().error("required"),
+      validation: (Rule) => Rule.required().error("required"),
     },
     {
       name: "slug",
@@ -19,7 +19,7 @@ export const post = {
       options: {
         source: "title",
       },
-      validation: (Rule: Rule) => Rule.required().error("required"),
+      validation: (Rule) => Rule.required().error("required"),
     },
     {
       name: "publishedAt",
@@ -31,7 +31,7 @@ export const post = {
       name: "excerpt",
       title: "Excerpt",
       type: "text",
-      validation: (Rule: Rule) => Rule.max(200).error("Max 200 characters"),
+      validation: (Rule) => Rule.max(200).error("Max 200 characters"),
     },
     {
       name: "body",
@@ -47,5 +47,16 @@ export const post = {
         },
       ],
     },
+    {
+      name: "tags",
+      title: "Tags",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: [{ type: "tag" }],
+        },
+      ],
+    },
   ],
-};
+});
