@@ -1,6 +1,7 @@
 import { client } from "../../../sanity/lib/client";
 import "../../css/index.css";
 import { Header } from "../components/Header";
+import PostComponent from "../components/PostComponent";
 import { Post } from "../utils/interface";
 
 async function getPost() {
@@ -10,6 +11,12 @@ async function getPost() {
       slug,
       publishedAt,
       excerpt,
+      _id,
+      tags[]-> {
+        name,
+        slug,
+        _id
+      }
   }`;
 
   const data = await client.fetch(query);
@@ -18,14 +25,12 @@ async function getPost() {
 
 export default async function Home() {
   const posts: Post[] = await getPost();
-  console.log(posts, "posts");
-
   return (
     <div>
       <Header title="Welcome to the blog" />
       <div>
         {posts?.length > 0 &&
-          posts.map((post) => <p key={post._id}>{post.title}</p>)}
+          posts.map((post) => <PostComponent key={post?._id} post={post} />)}
       </div>
     </div>
   );

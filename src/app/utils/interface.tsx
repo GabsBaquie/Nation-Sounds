@@ -12,4 +12,5 @@ export interface Tag {
   title: string;
   slug: { current: string };
   _id: string;
+  name: string;
 }
