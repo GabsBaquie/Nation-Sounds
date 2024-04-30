@@ -15,8 +15,9 @@ async function getPost() {
       tags[]-> {
         name,
         slug,
-        _id
-      }
+        _id        
+      },
+      body,
   }`;
 
   const data = await client.fetch(query);
