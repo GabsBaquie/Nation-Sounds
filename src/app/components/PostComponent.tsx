@@ -14,9 +14,9 @@ const PostComponent = ({ post }: Props) => {
   return (
     <div className={CardStyle}>
       <Link href={`/posts/${post?.slug?.current}`}>
-        <h2 className={`${font.className}, text-2xl `}>{post?.title}</h2>
-        <p className={`${dataFont.className}, text-purple-500 my-2`}>
-          {new Date(post?.publishedAt).toDateString()}
+        <h2 className={`${font?.className} text-2xl `}>{post?.title}</h2>
+        <p className={`${dataFont?.className} text-purple-500 my-2`}>
+          {new Date(post?.publishedAt).toLocaleDateString("fr-FR")}
         </p>
         <p>{post?.excerpt}</p>
       </Link>
@@ -39,7 +39,7 @@ export default PostComponent;
 
 const CardStyle = `
   p-4
-  m-8
+  m-9
   border 
   border-gray-900 
   rounded-md 
@@ -47,5 +47,5 @@ const CardStyle = `
   shadow-purple-950 
   hover:bg-purple-950
   hover:bg-opacity-10
-  max-h-48
+  max-h-50
   `;

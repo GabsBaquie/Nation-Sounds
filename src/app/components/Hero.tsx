@@ -4,7 +4,6 @@ import "../../css/index.css";
 export default function Hero() {
   return (
     <main className="body">
-      {/* Mobile layout */}
       <div className="parent">
         <div className="div1">
           <Image

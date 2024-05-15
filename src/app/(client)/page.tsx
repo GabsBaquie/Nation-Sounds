@@ -24,11 +24,13 @@ async function getPost() {
   return data;
 }
 
+export const revalidate = 60;
+
 export default async function Home() {
   const posts: Post[] = await getPost();
   return (
     <div>
-      <Header title="Welcome to the blog" />
+      <Header title="Articles" tags />
       <div>
         {posts?.length > 0 &&
           posts.map((post) => <PostComponent key={post?._id} post={post} />)}

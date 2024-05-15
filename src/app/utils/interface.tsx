@@ -13,4 +13,5 @@ export interface Tag {
   slug: { current: string };
   _id: string;
   name: string;
+  postCount: number;
 }
